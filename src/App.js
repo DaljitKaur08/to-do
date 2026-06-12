@@ -1,4 +1,4 @@
-import { useReducer, useState, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 
 import Header from './components/Header';
 import TaskForm from './components/TaskForm';
@@ -20,7 +20,10 @@ function App() {
         }
     );
 
-    const [editTask, setEditTask] = useState(null);
+    const [editTask, setEditTask] = useReducer(
+        (state, action) => action,
+        null
+    );
 
     useEffect(() => {
         localStorage.setItem(

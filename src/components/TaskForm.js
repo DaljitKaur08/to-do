@@ -16,7 +16,11 @@ function TaskForm({
 
     }, [editTask]);
 
-    const handleSubmit = (event) => {
+    const handleInput = event => {
+        setTitle(event.target.value);
+    };
+
+    const handleSubmit = event => {
 
         event.preventDefault();
 
@@ -32,7 +36,6 @@ function TaskForm({
                     ...editTask,
                     title: title,
                     date: new Date()
-
                 }
             });
 
@@ -63,9 +66,7 @@ function TaskForm({
                     type="text"
                     placeholder="New task"
                     value={title}
-                    onChange={(event) =>
-                        setTitle(event.target.value)
-                    }
+                    onChange={handleInput}
                 />
 
                 <button type="submit">

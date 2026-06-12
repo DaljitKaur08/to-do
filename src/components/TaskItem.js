@@ -1,9 +1,3 @@
-import {
-    FaCheckCircle,
-    FaEdit,
-    FaTrash
-} from 'react-icons/fa';
-
 function TaskItem({
     task,
     dispatch,
@@ -56,21 +50,21 @@ function TaskItem({
                     className="icon-btn"
                     onClick={handleComplete}
                 >
-                    <FaCheckCircle />
+                    <i className="fa-solid fa-check"></i>
                 </button>
 
                 <button
                     className="icon-btn"
                     onClick={handleEdit}
                 >
-                    <FaEdit />
+                    <i className="fa-solid fa-pen"></i>
                 </button>
 
                 <button
                     className="icon-btn"
                     onClick={handleDelete}
                 >
-                    <FaTrash />
+                    <i className="fa-solid fa-trash"></i>
                 </button>
 
             </div>
