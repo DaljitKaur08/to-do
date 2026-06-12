@@ -3,7 +3,7 @@ function TaskItem({
     dispatch,
     setEditTask
 }) {
-
+// Dispatch action to complete task
     const handleComplete = () => {
         dispatch({
             type: 'COMPLETE_TASK',

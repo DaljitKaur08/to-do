@@ -53,11 +53,7 @@ form button {
 }
 
 .task-card.completed {
-    border: 2px solid green;
-}
-
-.task-card.completed h3 {
-    color: green;
+    border-left: 4px solid #2ecc71;
 }
 
 .task-date {
@@ -68,10 +64,11 @@ form button {
 
 .task-actions {
     margin-top: 10px;
+    text-align: right;
 }
 
 .icon-btn {
-    margin-right: 10px;
+    margin-left: 10px;
     background: none;
     border: none;
     cursor: pointer;
