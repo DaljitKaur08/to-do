@@ -1,10 +1,13 @@
 import TaskItem from './TaskItem';
 
-function TaskList({ tasks, dispatch }) {
+function TaskList({
+    tasks,
+    dispatch,
+    setEditTask
+}) {
 
     return (
         <section>
-
             <div className="tasks-grid">
 
                 {tasks.map(task => (
@@ -12,11 +15,11 @@ function TaskList({ tasks, dispatch }) {
                         key={task.id}
                         task={task}
                         dispatch={dispatch}
+                        setEditTask={setEditTask}
                     />
                 ))}
 
             </div>
-
         </section>
     );
 }

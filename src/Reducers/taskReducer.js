@@ -16,9 +16,9 @@ function taskReducer(tasks, action) {
             return tasks.map(task =>
                 task.id === action.payload
                     ? {
-                        ...task,
-                        completed: !task.completed
-                    }
+                          ...task,
+                          completed: !task.completed
+                      }
                     : task
             );
 

@@ -1,9 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function TaskForm({ dispatch }) {
+function TaskForm({
+    dispatch,
+    editTask,
+    setEditTask
+}) {
 
     const [title, setTitle] = useState('');
-    const [date, setDate] = useState('');
+
+    useEffect(() => {
+
+        if (editTask) {
+            setTitle(editTask.title);
+        }
+
+    }, [editTask]);
 
     const handleSubmit = (event) => {
 
@@ -13,48 +24,50 @@ function TaskForm({ dispatch }) {
             return;
         }
 
-        const newTask = {
-            id: Date.now(),
-            title: title,
-            date: date,
-            completed: false
-        };
+        if (editTask) {
 
-        dispatch({
-            type: 'ADD_TASK',
-            payload: newTask
-        });
+            dispatch({
+                type: 'UPDATE_TASK',
+                payload: {
+                    ...editTask,
+                    title: title
+                }
+            });
+
+            setEditTask(null);
+
+        } else {
+
+            dispatch({
+                type: 'ADD_TASK',
+                payload: {
+                    id: Date.now(),
+                    title: title,
+                    date: new Date(),
+                    completed: false
+                }
+            });
+        }
 
         setTitle('');
-        setDate('');
     };
 
     return (
         <section>
 
-            <h2>Add Task</h2>
-
             <form onSubmit={handleSubmit}>
 
                 <input
                     type="text"
-                    placeholder="Enter task"
+                    placeholder="New task"
                     value={title}
                     onChange={(event) =>
                         setTitle(event.target.value)
                     }
                 />
 
-                <input
-                    type="date"
-                    value={date}
-                    onChange={(event) =>
-                        setDate(event.target.value)
-                    }
-                />
-
                 <button type="submit">
-                    Add Task
+                    {editTask ? 'UPDATE' : 'ADD'}
                 </button>
 
             </form>
