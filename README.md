@@ -6,7 +6,8 @@ This project is a To-Do application built with React. It allows users to add, ed
 
 ## Screenshot
 
-![To-Do App](work.png)
+![To-Do App](public/work.png)
+
 
 ## Features
 
