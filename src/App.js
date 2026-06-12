@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react';
+import { useReducer, useState, useEffect } from 'react';
 
 import Header from './components/Header';
 import TaskForm from './components/TaskForm';
@@ -8,8 +8,26 @@ import taskReducer from './Reducers/taskReducer';
 
 function App() {
 
-    const [tasks, dispatch] = useReducer(taskReducer, []);
+    const [tasks, dispatch] = useReducer(
+        taskReducer,
+        [],
+        () => {
+            const savedTasks = JSON.parse(
+                localStorage.getItem('tasks')
+            );
+
+            return savedTasks || [];
+        }
+    );
+
     const [editTask, setEditTask] = useState(null);
+
+    useEffect(() => {
+        localStorage.setItem(
+            'tasks',
+            JSON.stringify(tasks)
+        );
+    }, [tasks]);
 
     return (
         <>

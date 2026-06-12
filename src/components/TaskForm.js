@@ -30,7 +30,9 @@ function TaskForm({
                 type: 'UPDATE_TASK',
                 payload: {
                     ...editTask,
-                    title: title
+                    title: title,
+                    date: new Date()
+
                 }
             });
 
